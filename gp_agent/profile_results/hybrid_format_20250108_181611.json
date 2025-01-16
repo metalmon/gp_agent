@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_181611",
+  "hypothesis": {
+    "name": "hybrid_format",
+    "description": "Тестирование гибридного формата с markdown для текста и строгой структурой для инструментов",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n### Анализ (на английском)\n- Оценка ситуации\n- Возможные подходы\n- Потенциальные проблемы\n\n### План (на русском)\n1. Первый шаг\n2. Второй шаг\n3. Следующие действия\n\n### Действие\n[Здесь вызов инструмента в формате JSON]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n### Анализ (на английском)\n- Оценка ситуации\n- Возможные подходы\n- Потенциальные проблемы\n\n### План (на русском)\n1. Первый шаг\n2. Второй шаг\n3. Следующие действия\n\n### Действие\n[Здесь вызов инструмента в формате JSON]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Сделай страницу с инструкцией по работе с CRM",
+  "response": {
+    "id": "gen-1736360232-0Q5Mhtbo9jinojTTdbKh",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736360232,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants to create a new page with instructions on how to use a CRM.\n\nHere's a plan:\n1. **Search for general information about what to include in CRM instructions.** This will help to structure the page effectively.\n2. **Create a new page with a basic structure based on the search results.** This will involve defining the key sections for the instructions.\n3. **Add placeholders for the specific content of each section.** This allows for easy expansion later.### Analysis (in English)\n- **Situation Assessment:** The user wants to create a new page containing instructions for using a CRM system. This is a common need for onboarding new users or providing ongoing support. The instructions should be clear, concise, and easy to follow.\n- **Possible Approaches:**\n    - Start with a general outline of CRM functionalities and then detail each one.\n    - Categorize instructions by user role (e.g., sales, marketing, support).\n    - Structure the instructions based on workflows or common tasks.\n- **Potential Problems:**\n    - The instructions might be too generic if the specific CRM isn't considered.\n    - The instructions might become outdated as the CRM is updated.\n    - It's unclear what specific CRM is being referred to.\n\n### План (на русском)\n1. Найти общую информацию о том, какие разделы обычно включают в инструкции по работе с CRM.\n2. Создать новую страницу с базовой структурой для инструкции.\n3. Добавить разделы, полученные на предыдущем шаге, в структуру страницы.\n\n### Действие\n```tool_call\n{\n    \"name\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"what to include in crm instructions\"\n    }\n}\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 312,
+      "completion_tokens": 379,
+      "total_tokens": 691
+    }
+  }
+}

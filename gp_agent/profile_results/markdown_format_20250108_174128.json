@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_174128",
+  "hypothesis": {
+    "name": "markdown_format",
+    "description": "Тестирование структурированного markdown формата с разделением анализа и действий",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Проанализируй рынок CRM систем",
+  "response": {
+    "id": "gen-1736358089-u4sna6CIa1Fp0xFFdwoN",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736358089,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants an analysis of the CRM system market. I should provide an analysis that covers key aspects of the market.\n\n**Analysis:**\nThe CRM (Customer Relationship Management) system market is a large and dynamic sector within the broader software industry. Key trends include the increasing adoption of cloud-based solutions, the growing importance of mobile accessibility, the integration of AI and machine learning for automation and predictive analytics, and the demand for industry-specific solutions. Competition is fierce, with many established vendors and newer, nimbler players vying for market share. Factors influencing customer choice include price, functionality, ease of use, integration capabilities, and the vendor's reputation and support. The market is driven by the need for businesses of all sizes to effectively manage customer interactions, improve sales processes, and enhance customer satisfaction.\n\n**План действий:**\n1. Выполнить поиск актуальной информации о рынке CRM систем.\n2. На основе найденной информации подготовить более детальный анализ.**Analysis:**\nThe request is to analyze the CRM system market. This requires understanding the current trends, key players, market size, and future outlook. Gathering up-to-date market research reports and news articles will be crucial for this analysis. I anticipate information regarding cloud adoption, the role of AI, and the segmentation of the market by industry and company size will be prominent.\n\n**План действий:**\n1. Запустить поиск в интернете для получения актуальных обзоров и аналитики рынка CRM систем.\n\n```tool_call\n{\n    \"name\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"рынок CRM систем анализ 2024\"\n    }\n}\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 290,
+      "completion_tokens": 358,
+      "total_tokens": 648
+    }
+  }
+}

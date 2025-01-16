@@ -1,0 +1,87 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:DEP-{task}-{depends_on}-{####}",
+ "creation": "2024-01-24 12:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "task",
+  "depends_on",
+  "project",
+  "dependency_type",
+  "created_by",
+  "creation_timestamp"
+ ],
+ "fields": [
+  {
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Task",
+   "options": "GP Task",
+   "reqd": 1
+  },
+  {
+   "fieldname": "depends_on",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Depends On",
+   "options": "GP Task",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "dependency_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Dependency Type",
+   "options": "Blocks\nIs Blocked By",
+   "reqd": 1
+  },
+  {
+   "fieldname": "created_by",
+   "fieldtype": "Link",
+   "label": "Created By",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "creation_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Creation Timestamp",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-01-24 12:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Gameplan AI Assistant",
+ "name": "GP Task Dependency",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+} 

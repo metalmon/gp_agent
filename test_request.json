@@ -1,0 +1,105 @@
+{
+  "info": {
+    "name": "OpenRouter API Request",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Chat Completions",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Authorization",
+            "value": "Bearer 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"
+          },
+          {
+            "key": "HTTP-Referer",
+            "value": "http://localhost:3000"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": {
+            "model": "google/gemini-flash-1.5",
+            "messages": [
+              {
+                "role": "system",
+                "content": "Я – опытный коллега, который помогает превращать идеи в результаты. Я знаю, что анализ критического пути и прогнозирование сроков НЕВОЗМОЖНЫ без предварительного создания зависимостей между задачами.\n\nПеред ЛЮБЫМ анализом или прогнозированием я ОБЯЗАН:\n1. СНАЧАЛА получить список всех задач через list_tasks и дождаться результата\n2. ТОЛЬКО ПОСЛЕ ПОЛУЧЕНИЯ СПИСКА ЗАДАЧ проанализировать их в контексте\n3. ТОЛЬКО ПОСЛЕ АНАЛИЗА создать все необходимые зависимости через create_task_dependencies\n\nЯ ВСЕГДА вызываю только один метод за раз и жду его результата, прежде чем вызывать следующий метод.\n\nЕсли я попытаюсь использовать analyze_critical_path, predict_completion_dates или analyze_team_workload БЕЗ предварительного выполнения этих шагов - это приведет к ОШИБКЕ.\n\nТолько ПОСЛЕ ВСЕХ ЭТИХ ШАГОВ я могу использовать:\n- analyze_critical_path - для анализа критического пути\n- predict_completion_dates - для прогнозирования сроков\n- analyze_team_workload - для оценки загрузки команды\n\nПри создании зависимостей я использую следующие типы:\n- \"Blocks\" - когда задача блокирует выполнение другой задачи\n- \"Is Blocked By\" - когда задача заблокирована другой задачей"
+              },
+              {
+                "role": "user",
+                "content": "Проанализируй критический путь в проекте mobile-app"
+              }
+            ],
+            "tools": [
+              {
+                "type": "function",
+                "function": {
+                  "name": "list_tasks",
+                  "description": "List tasks in a project with filtering",
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "project_id": {
+                        "type": "string",
+                        "description": "ID of the project to list tasks from"
+                      },
+                      "status": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "Optional list of statuses to filter by (Backlog/Todo/In Progress/Done/Canceled)"
+                      },
+                      "assigned_to": {
+                        "type": "string",
+                        "description": "Optional user to filter tasks assigned to"
+                      }
+                    },
+                    "required": ["project_id"]
+                  }
+                }
+              },
+              {
+                "type": "function",
+                "function": {
+                  "name": "analyze_critical_path",
+                  "description": "Analyze critical path for project tasks to identify bottlenecks and dependencies",
+                  "parameters": {
+                    "type": "object",
+                    "properties": {
+                      "project_id": {
+                        "type": "string",
+                        "description": "ID of the project to analyze"
+                      }
+                    },
+                    "required": ["project_id"]
+                  }
+                }
+              }
+            ],
+            "tool_choice": "auto",
+            "temperature": 1.21,
+            "top_p": 1,
+            "top_k": 200
+          }
+        },
+        "url": {
+          "raw": "https://openrouter.ai/api/v1/chat/completions",
+          "protocol": "https",
+          "host": ["openrouter", "ai"],
+          "path": ["api", "v1", "chat", "completions"]
+        }
+      }
+    }
+  ]
+}

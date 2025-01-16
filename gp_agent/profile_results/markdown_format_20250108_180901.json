@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_180901",
+  "hypothesis": {
+    "name": "markdown_format",
+    "description": "Тестирование структурированного markdown формата с разделением анализа и действий",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Как изменился рынок CRM за последний год?",
+  "response": {
+    "id": "gen-1736359741-DlOq6Gky1GOuztbgELy1",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736359741,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user is asking about changes in the CRM market over the past year. To answer this, I need to find recent information about CRM market trends and developments. This requires using the `web_search` function.**Analysis:**\nThe user wants to know how the CRM market has changed recently. To provide a comprehensive answer, I need to gather information about current trends, new technologies, and shifts in market share within the CRM industry over the last year.\n\n**План действий:**\n1. Воспользуюсь функцией `web_search` для поиска информации о последних изменениях на рынке CRM.\n```tool_call\n{\n    \"name\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"CRM market trends last year\"\n    }\n}\n```\n",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 292,
+      "completion_tokens": 162,
+      "total_tokens": 454
+    }
+  }
+}

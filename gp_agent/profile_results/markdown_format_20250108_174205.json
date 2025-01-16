@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_174205",
+  "hypothesis": {
+    "name": "markdown_format",
+    "description": "Тестирование структурированного markdown формата с разделением анализа и действий",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Сделай страницу с инструкцией по работе с CRM",
+  "response": {
+    "id": "gen-1736358126-y1KZ3ose3DYBewqtsqTS",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736358126,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants to create a new page with instructions on how to use a CRM. This requires creating a new page and populating it with content. I should start by creating the page and then think about what kind of content would be useful for CRM instructions.\n\n**Analysis:**\nThe user's request is clear: create a CRM instruction page. This implies a need for a new page within the system and relevant content to guide users. Considering typical CRM usage, key areas would likely include logging in, navigating the interface, managing contacts, deals, and potentially reports.\n\n**План действий:**\n1. Создать новую страницу с названием \"Инструкция по работе с CRM\".\n2. Добавить разделы с основными инструкциями по работе с CRM. Включить:\n    * Вход в систему\n    * Навигация по интерфейсу\n    * Работа с контактами\n    * Работа со сделками\n    * Создание отчетов (если применимо)```tool_call\n{\n    \"name\": \"create_page\",\n    \"parameters\": {\n        \"title\": \"Инструкция по работе с CRM\"\n    }\n}\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 295,
+      "completion_tokens": 251,
+      "total_tokens": 546
+    }
+  }
+}

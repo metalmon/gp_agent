@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_181731",
+  "hypothesis": {
+    "name": "hybrid_format",
+    "description": "Тестирование гибридного формата с markdown для текста и строгой структурой для инструментов",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n### Анализ (на английском)\n- Оценка ситуации\n- Возможные подходы\n- Потенциальные проблемы\n\n### План (на русском)\n1. Первый шаг\n2. Второй шаг\n3. Следующие действия\n\n### Действие\n[Здесь вызов инструмента в формате JSON]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n### Анализ (на английском)\n- Оценка ситуации\n- Возможные подходы\n- Потенциальные проблемы\n\n### План (на русском)\n1. Первый шаг\n2. Второй шаг\n3. Следующие действия\n\n### Действие\n[Здесь вызов инструмента в формате JSON]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Нужна страница с чек-листом для менеджеров",
+  "response": {
+    "id": "gen-1736360252-iroJHuoWpT46ksS2LGjA",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736360252,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants a checklist page for managers. I need to figure out what kind of content should be included in this checklist. Since I have access to web search, it makes sense to start by looking for existing manager checklists.\n\n### Анализ\n- **Goal:** Create a checklist page for managers.\n- **Possible Approaches:**\n    1. Create a general checklist based on common management responsibilities.\n    2. Research existing manager checklists online and synthesize the information.\n- **Potential Problems:**\n    - The user hasn't specified the type of manager (e.g., project manager, people manager). A general checklist might be too broad.\n    -  I don't know the target audience or context of this checklist, which could affect the content.\n\n### План\n1. Выполнить поиск в интернете, чтобы найти примеры чек-листов для менеджеров.\n2. Проанализировать результаты поиска и определить общие категории и элементы.\n3. Создать новую страницу с собранной информацией.\n\n### Действие\n```tool_call\n{\n    \"name\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"manager checklist\"\n    }\n}\n```\n### Анализ\n- **Assessment:** The user needs a checklist page for managers. Searching online for examples is a good first step to get ideas for what to include.\n- **Possible Approaches:**\n    1. Review the search results and identify common themes and items in manager checklists.\n    2. Focus on actionable items that a manager can use regularly.\n- **Potential Problems:** The search results might be too general or specific to certain industries or management roles. I need to synthesize the information into a generally useful checklist.\n\n### План\n1. Получить контент нескольких веб-страниц из результатов поиска, чтобы проанализировать их содержание.\n2. На основе анализа создать структуру и содержание для страницы с чек-листом.\n3. Создать новую страницу с названием \"Чек-лист для менеджеров\".\n\n### Действие\n```tool_call\n{\n    \"name\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"manager daily checklist\",\n        \"num_results\": 3\n    }\n}\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 312,
+      "completion_tokens": 489,
+      "total_tokens": 801
+    }
+  }
+}

@@ -1,0 +1,386 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:LOG-{project_id}-{discussion_id}-{creation_timestamp}",
+ "creation": "2024-01-15 12:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "column_break_jpku",
+  "model",
+  "column_break_taxc",
+  "api_schema",
+  "column_break_hczg",
+  "default_user",
+  "section_break_response",
+  "response",
+  "response_content",
+  "error",
+  "parent_log_id",
+  "is_tool_call",
+  "section_break_context",
+  "system_prompt",
+  "system_prompt_content",
+  "messages",
+  "messages_content",
+  "tools",
+  "tools_content",
+  "section_break_ppoo",
+  "creation_timestamp",
+  "column_break_xcmt",
+  "processing_timestamp",
+  "column_break_zduk",
+  "completion_timestamp",
+  "column_break_wfxn",
+  "retry_count",
+  "section_break_upgu",
+  "project_id",
+  "team_id",
+  "column_break_qmdu",
+  "discussion_id",
+  "last_message_id",
+  "section_break_dkae",
+  "temperature",
+  "column_break_swcm",
+  "top_p",
+  "column_break_nree",
+  "top_k",
+  "column_break_ktrk",
+  "max_tokens",
+  "column_break_gdyw",
+  "context_depth",
+  "section_break_kbna",
+  "token_count",
+  "column_break_bgno",
+  "prompt_tokens",
+  "column_break_tqwy",
+  "completion_tokens",
+  "column_break_jdeu",
+  "total_tokens"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Queued\nProcessing\nError\nCompleted\nFailed",
+   "search_index": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_tool_call",
+   "fieldtype": "Check",
+   "label": "Is Tool Call"
+  },
+  {
+   "fieldname": "parent_log_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Parent Log",
+   "options": "GP Agent Log"
+  },
+  {
+   "fieldname": "creation_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Creation Timestamp",
+   "reqd": 1
+  },
+  {
+   "fieldname": "processing_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Processing Timestamp"
+  },
+  {
+   "fieldname": "completion_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Completion Timestamp"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "label": "Model",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_user",
+   "fieldtype": "Link",
+   "label": "Agent User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "team_id",
+   "fieldtype": "Data",
+   "label": "Team ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "project_id",
+   "fieldtype": "Data",
+   "label": "Project ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "discussion_id",
+   "fieldtype": "Data",
+   "label": "Discussion ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_message_id",
+   "fieldtype": "Data",
+   "label": "Last Message ID"
+  },
+  {
+   "description": "Controls randomness (0-1)",
+   "fieldname": "temperature",
+   "fieldtype": "Float",
+   "label": "Temperature"
+  },
+  {
+   "description": "Maximum number of tokens to generate",
+   "fieldname": "max_tokens",
+   "fieldtype": "Int",
+   "label": "Max Tokens"
+  },
+  {
+   "description": "Nucleus sampling threshold (0-1)",
+   "fieldname": "top_p",
+   "fieldtype": "Float",
+   "label": "Top P"
+  },
+  {
+   "description": "Number of top tokens to consider for sampling",
+   "fieldname": "top_k",
+   "fieldtype": "Float",
+   "label": "Top K"
+  },
+  {
+   "description": "The actual context depth used after compression",
+   "fieldname": "context_depth",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Context Depth",
+   "options": "Discussion Only\nProject Wide\nTeam Wide"
+  },
+  {
+   "description": "Total number of tokens in context by tiktoken count",
+   "fieldname": "token_count",
+   "fieldtype": "Int",
+   "label": "Token Count"
+  },
+  {
+   "fieldname": "retry_count",
+   "fieldtype": "Int",
+   "label": "Retry Count"
+  },
+  {
+   "description": "Number of tokens in the prompt",
+   "fieldname": "prompt_tokens",
+   "fieldtype": "Int",
+   "label": "Prompt Tokens"
+  },
+  {
+   "description": "Number of tokens in the completion/response",
+   "fieldname": "completion_tokens",
+   "fieldtype": "Int",
+   "label": "Completion Tokens"
+  },
+  {
+   "description": "Total number of tokens used in the request",
+   "fieldname": "total_tokens",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Total Tokens"
+  },
+  {
+   "description": "System prompt with base instructions and context",
+   "fieldname": "system_prompt",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "System Prompt JSON",
+   "options": "JSON"
+  },
+  {
+   "description": "System prompt with base instructions and context",
+   "fieldname": "system_prompt_content",
+   "fieldtype": "Markdown Editor",
+   "is_virtual": 1,
+   "label": "System Prompt"
+  },
+  {
+   "description": "List of messages with content, tasks, tool calls, and metadata",
+   "fieldname": "messages",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Messages JSON",
+   "options": "JSON"
+  },
+  {
+   "description": "List of messages with content, tasks, tool calls, and metadatas",
+   "fieldname": "messages_content",
+   "fieldtype": "Long Text",
+   "is_virtual": 1,
+   "label": "Messages"
+  },
+  {
+   "description": "List of available tools and their schemas",
+   "fieldname": "tools",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Tools JSON",
+   "options": "JSON"
+  },
+  {
+   "description": "List of available tools and their schemas",
+   "fieldname": "tools_content",
+   "fieldtype": "Long Text",
+   "is_virtual": 1,
+   "label": "Tools"
+  },
+  {
+   "description": "Structured response from LLM",
+   "fieldname": "response",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Response JSON",
+   "options": "JSON"
+  },
+  {
+   "description": "Human-readable response",
+   "fieldname": "response_content",
+   "fieldtype": "Long Text",
+   "is_virtual": 1,
+   "label": "Response"
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Text",
+   "label": "Error"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_context",
+   "fieldtype": "Section Break",
+   "label": "Context"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_response",
+   "fieldtype": "Section Break",
+   "label": "Response"
+  },
+  {
+   "fieldname": "column_break_jpku",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_taxc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qmdu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_swcm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_nree",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_ktrk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_gdyw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_bgno",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_tqwy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_upgu",
+   "fieldtype": "Section Break",
+   "label": "Gameplan Links"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_dkae",
+   "fieldtype": "Section Break",
+   "label": "Model Parameters"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_kbna",
+   "fieldtype": "Section Break",
+   "label": "Token Info"
+  },
+  {
+   "fieldname": "api_schema",
+   "fieldtype": "Select",
+   "label": "API Schema",
+   "options": "OpenAI\nAnthropic"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_ppoo",
+   "fieldtype": "Section Break",
+   "label": "Sheduler Info"
+  },
+  {
+   "fieldname": "column_break_xcmt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zduk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_wfxn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jdeu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hczg",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "links": [],
+ "modified": "2025-01-16 01:10:47.720476",
+ "modified_by": "Administrator",
+ "module": "Gameplan AI Assistant",
+ "name": "GP Agent Log",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

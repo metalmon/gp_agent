@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_152002",
+  "hypothesis": {
+    "name": "xml_format",
+    "description": "Тестирование XML формата ответов с тегами <thoughts> и <response>",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе использую следующий формат:\n<thoughts>\n    [Здесь я анализирую ситуацию на основе контекста и опыта из других проектов]\n</thoughts>\n<response>\n    [Здесь я предлагаю конкретные действия и решения, говоря прямо и по делу]\n</response>\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе использую следующий формат:\n<thoughts>\n    [Здесь я анализирую ситуацию на основе контекста и опыта из других проектов]\n</thoughts>\n<response>\n    [Здесь я предлагаю конкретные действия и решения, говоря прямо и по делу]\n</response>\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n",
+  "user_prompt": "Актуализируй информацию о метриках",
+  "response": {
+    "id": "gen-1736349724-0BoKiOkxIYsf1pfCL2J1",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736349724,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants to update information about metrics. This is a broad request. To provide useful information, I need to understand what kind of metrics the user is interested in. Without more context, I should start with a general overview and then offer ways to narrow down the scope.\n\n1. **Initial thought:** The user wants general information about metrics. I can provide definitions and examples of common metrics.\n2. **Refinement:**  \"Metrics\" is too broad. Are we talking about web analytics, business metrics, software development metrics, or something else?  It's better to start general and then ask for clarification.\n3. **Function usage:**  Since I need up-to-date information, `web_search` is the right function. I should search for \"types of metrics\" or \"key performance indicators.\"\n\n**Search Query:** \"types of metrics\"\n```tool_code\nweb_search(\"types of metrics\")\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 247,
+      "completion_tokens": 197,
+      "total_tokens": 444
+    }
+  }
+}

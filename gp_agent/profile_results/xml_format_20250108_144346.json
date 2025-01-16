@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_144346",
+  "hypothesis": {
+    "name": "xml_format",
+    "description": "Тестирование XML формата ответов с тегами <thoughts> и <response>",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе использую следующий формат:\n<thoughts>\n    [Здесь я анализирую ситуацию на основе контекста и опыта из других проектов]\n</thoughts>\n<response>\n    [Здесь я предлагаю конкретные действия и решения, говоря прямо и по делу]\n</response>\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе использую следующий формат:\n<thoughts>\n    [Здесь я анализирую ситуацию на основе контекста и опыта из других проектов]\n</thoughts>\n<response>\n    [Здесь я предлагаю конкретные действия и решения, говоря прямо и по делу]\n</response>\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n",
+  "user_prompt": "Сделай страницу с инструкцией по работе с CRM",
+  "response": {
+    "id": "gen-1736347426-wVVmyzshsUJnkt8BvIl3",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736347426,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants to create a help page for a CRM. This is a clear request to create a new page. I should use the `create_page` function. I'll need to provide a title and some initial content. Since the user didn't provide specific details about the CRM, I'll create a basic structure with common CRM features. I anticipate needing to break down the instructions into sections for clarity.```tool_code\ncreate_page(title='Инструкция по работе с CRM', content='## Добро пожаловать в CRM!\\n\\nЭта страница поможет вам освоить основные функции нашей CRM-системы.\\n\\n**Основные разделы:**\\n\\n* **Клиенты:** Управление информацией о ваших клиентах.\\n* **Сделки:** Отслеживание процесса продаж.\\n* **Задачи:** Планирование и выполнение задач.\\n* **Отчеты:** Анализ данных для улучшения работы.\\n\\n**Дальнейшие шаги:**\\n\\nПерейдите к интересующему вас разделу для получения подробной информации.')\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 249,
+      "completion_tokens": 232,
+      "total_tokens": 481
+    }
+  }
+}

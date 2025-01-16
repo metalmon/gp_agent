@@ -1,9 +1,12 @@
+# -*- coding: utf-8 -*-
+from . import __version__ as app_version
+
 app_name = "gp_agent"
 app_title = "Gameplan AI Assistant"
 app_publisher = "metalmon"
-app_description = "Frappe App is an AI agent to help develop projects, prioritize and find new solutions"
-app_email = "alex@frappecrm.ru"
-app_license = "mit"
+app_description = "AI Assistant for Gameplan"
+app_email = "metalmon@example.com"
+app_license = "MIT"
 
 # Apps
 # ------------------
@@ -43,10 +46,7 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
-# doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
-# doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
+
 
 # Svg Icons
 # ------------------
@@ -151,23 +151,23 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"gp_agent.tasks.all"
-# 	],
-# 	"daily": [
-# 		"gp_agent.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"gp_agent.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"gp_agent.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"gp_agent.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	"hourly": [
+		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
+	],
+	"daily_long": [
+		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
+	],
+	"daily": [
+		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
+	],
+	"weekly_long": [
+		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
+	],
+	"all": [
+		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_process_pending_logs"
+	]
+}
 
 # Testing
 # -------

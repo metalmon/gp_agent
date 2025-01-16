@@ -1,0 +1,283 @@
+{
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "list_tasks",
+        "description": "List tasks in a project with filtering",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "description": "ID of the project to list tasks from"
+            },
+            "status": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Optional list of statuses to filter by (Backlog/Todo/In Progress/Done/Canceled)"
+            },
+            "assigned_to": {
+              "type": "string",
+              "description": "Optional user to filter tasks assigned to"
+            }
+          },
+          "required": ["project_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_task_details",
+        "description": "Get detailed information about a task with optional format conversion",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "task_id": {
+              "type": "string",
+              "description": "ID of the task to get details for"
+            },
+            "format": {
+              "type": "string",
+              "description": "Content format for description",
+              "enum": ["html", "markdown"],
+              "default": "html"
+            }
+          },
+          "required": ["task_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "update_task",
+        "description": "Update task details",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "task_id": {
+              "type": "string",
+              "description": "ID of the task to update"
+            },
+            "status": {
+              "type": "string",
+              "description": "New status",
+              "enum": ["Backlog", "Todo", "In Progress", "Done", "Canceled"]
+            },
+            "description": {
+              "type": "string",
+              "description": "New description in markdown format. Supports standard markdown syntax including:\n- Headers (# ## ###)\n- Lists (- * 1.)\n- Code blocks (```language)\n- Tables (| --- |)\n- Links and images\n- Bold, italic, strikethrough\n- Task lists (- [ ] - [x])"
+            },
+            "start_date": {
+              "type": "string",
+              "description": "Start date (YYYY-MM-DD)"
+            }
+          },
+          "required": ["task_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_user_tasks",
+        "description": "Get tasks assigned to a specific user with optional filtering",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "user_id": {
+              "type": "string",
+              "description": "ID of the user to get tasks for"
+            },
+            "status": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["Backlog", "Todo", "In Progress", "Done", "Canceled"]
+              },
+              "description": "Optional list of statuses to filter by"
+            },
+            "project_id": {
+              "type": "string",
+              "description": "Optional project ID to filter tasks from"
+            }
+          },
+          "required": ["user_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "create_task_dependency",
+        "description": "Create a dependency relationship between two tasks",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "task_id": {
+              "type": "string",
+              "description": "ID of the task"
+            },
+            "depends_on_task_id": {
+              "type": "string",
+              "description": "ID of the task that blocks this task"
+            },
+            "dependency_type": {
+              "type": "string",
+              "description": "Type of dependency",
+              "enum": ["Blocks", "Is Blocked By"]
+            },
+            "analysis_reason": {
+              "type": "string",
+              "description": "Internal analysis explanation for creating this dependency"
+            }
+          },
+          "required": ["task_id", "depends_on_task_id", "dependency_type"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_task_dependencies",
+        "description": "Get list of dependencies for a specific task",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "task_id": {
+              "type": "string",
+              "description": "ID of the task to get dependencies for"
+            }
+          },
+          "required": ["task_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "analyze_critical_path",
+        "description": "Analyze critical path for project tasks to identify bottlenecks and dependencies",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "description": "ID of the project to analyze"
+            }
+          },
+          "required": ["project_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "find_similar_tasks",
+        "description": "Find historically similar tasks and analyze their estimation patterns",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "task_id": {
+              "type": "string",
+              "description": "ID of the task to analyze"
+            }
+          },
+          "required": ["task_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "list_pages",
+        "description": "List pages in a project",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "project_id": {
+              "type": "string",
+              "description": "ID of the project to list pages from"
+            }
+          },
+          "required": ["project_id"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_webpage_content",
+        "description": "Fetches webpage content and converts it to markdown format. Supports both external URLs and Frappe document URLs.",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "description": "URL of the webpage to fetch"
+            }
+          },
+          "required": ["url"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "web_search",
+        "description": "Perform a web search using Google Custom Search API",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "query": {
+              "type": "string",
+              "description": "The search query string"
+            },
+            "num_results": {
+              "type": "integer",
+              "description": "Number of results to return (default: 5, max: 10)",
+              "default": 5,
+              "minimum": 1,
+              "maximum": 10
+            }
+          },
+          "required": ["query"]
+        }
+      }
+    },
+    {
+      "type": "function",
+      "function": {
+        "name": "get_discussion_comments",
+        "description": "Get comments from a discussion with optional filtering by time",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "discussion_id": {
+              "type": "string",
+              "description": "ID of the discussion"
+            },
+            "limit": {
+              "type": "integer",
+              "description": "Maximum number of comments to return",
+              "default": 10
+            },
+            "before_id": {
+              "type": "string",
+              "description": "Get comments before this comment ID (optional)"
+            },
+            "after_id": {
+              "type": "string",
+              "description": "Get comments after this comment ID (optional)"
+            }
+          },
+          "required": ["discussion_id"]
+        }
+      }
+    }
+  ]
+} 

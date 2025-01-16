@@ -1,0 +1,350 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-01-15 12:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "html_xcys",
+  "enabled",
+  "section_break_yvan",
+  "schedule",
+  "column_break_dobt",
+  "model",
+  "column_break_rxln",
+  "default_user",
+  "skip_if_last_message_from_agent_user",
+  "section_break_model",
+  "base_url",
+  "column_break_fzvv",
+  "api_key",
+  "column_break_vvtx",
+  "api_schema",
+  "google_settings_section",
+  "google_search_api_key",
+  "column_break_ntzw",
+  "google_search_engine_id",
+  "section_break_xhfl",
+  "system_prompt",
+  "tools_prompt",
+  "section_break_model_params",
+  "temperature",
+  "column_break_vvsu",
+  "max_tokens",
+  "column_break_jbjr",
+  "top_p",
+  "column_break_gdyw",
+  "top_k",
+  "section_break_request",
+  "max_concurrent_requests",
+  "max_retries",
+  "column_break_zvat",
+  "request_timeout",
+  "retry_delay",
+  "section_break_context",
+  "context_depth",
+  "column_break_pnox",
+  "chat_memory",
+  "column_break_kuvz",
+  "context_builder",
+  "section_break_teams",
+  "include_teams",
+  "column_break_kuvw",
+  "exclude_teams"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "default": "Hourly",
+   "fieldname": "schedule",
+   "fieldtype": "Select",
+   "label": "Schedule",
+   "options": "Hourly\nDaily Morning\nDaily Evening\nWeekly on Weekends",
+   "reqd": 1
+  },
+  {
+   "fieldname": "default_user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Default User",
+   "options": "User",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_model",
+   "fieldtype": "Section Break",
+   "label": "Model Settings"
+  },
+  {
+   "default": "https://api.openai.com/v1",
+   "description": "Base URL for API requests (e.g. https://api.openai.com/v1 for OpenAI, https://api.anthropic.com for Anthropic)",
+   "fieldname": "base_url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Base URL",
+   "reqd": 1
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key",
+   "reqd": 1
+  },
+  {
+   "description": "API Key for Google Custom Search API",
+   "fieldname": "google_search_api_key",
+   "fieldtype": "Password",
+   "label": "Google Search API Key"
+  },
+  {
+   "description": "Search Engine ID (cx) for Google Custom Search API",
+   "fieldname": "google_search_engine_id",
+   "fieldtype": "Data",
+   "label": "Google Search Engine ID"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Model",
+   "options": "01-ai/yi-large\naetherwiing/mn-starcannon-12b\nai21/jamba-1-5-large\nai21/jamba-1-5-mini\nai21/jamba-instruct\nalpindale/goliath-120b\nalpindale/magnum-72b\namazon/nova-lite-v1\namazon/nova-micro-v1\namazon/nova-pro-v1\nanthracite-org/magnum-v2-72b\nanthracite-org/magnum-v4-72b\nanthropic/claude-2\nanthropic/claude-2.0\nanthropic/claude-2.0:beta\nanthropic/claude-2.1\nanthropic/claude-2.1:beta\nanthropic/claude-2:beta\nanthropic/claude-3-haiku\nanthropic/claude-3-haiku:beta\nanthropic/claude-3-opus\nanthropic/claude-3-opus:beta\nanthropic/claude-3-sonnet\nanthropic/claude-3-sonnet:beta\nanthropic/claude-3.5-haiku\nanthropic/claude-3.5-haiku-20241022\nanthropic/claude-3.5-haiku-20241022:beta\nanthropic/claude-3.5-haiku:beta\nanthropic/claude-3.5-sonnet\nanthropic/claude-3.5-sonnet-20240620\nanthropic/claude-3.5-sonnet-20240620:beta\nanthropic/claude-3.5-sonnet:beta\ncognitivecomputations/dolphin-mixtral-8x22b\ncognitivecomputations/dolphin-mixtral-8x7b\ncohere/command\ncohere/command-r\ncohere/command-r-03-2024\ncohere/command-r-08-2024\ncohere/command-r-plus\ncohere/command-r-plus-04-2024\ncohere/command-r-plus-08-2024\ncohere/command-r7b-12-2024\ndatabricks/dbrx-instruct\ndeepseek/deepseek-chat\ndeepseek/deepseek-chat-v2.5\neva-unit-01/eva-llama-3.33-70b\neva-unit-01/eva-qwen-2.5-32b\neva-unit-01/eva-qwen-2.5-72b\ngoogle/gemini-2.0-flash-exp:free\ngoogle/gemini-2.0-flash-thinking-exp:free\ngoogle/gemini-exp-1114:free\ngoogle/gemini-exp-1121:free\ngoogle/gemini-exp-1206:free\ngoogle/gemini-flash-1.5\ngoogle/gemini-flash-1.5-8b\ngoogle/gemini-flash-1.5-8b-exp\ngoogle/gemini-flash-1.5-exp\ngoogle/gemini-pro\ngoogle/gemini-pro-1.5\ngoogle/gemini-pro-1.5-exp\ngoogle/gemini-pro-vision\ngoogle/gemma-2-27b-it\ngoogle/gemma-2-9b-it\ngoogle/gemma-2-9b-it:free\ngoogle/learnlm-1.5-pro-experimental:free\ngoogle/palm-2-chat-bison\ngoogle/palm-2-chat-bison-32k\ngoogle/palm-2-codechat-bison\ngoogle/palm-2-codechat-bison-32k\ngryphe/mythomax-l2-13b\ngryphe/mythomax-l2-13b:extended\ngryphe/mythomax-l2-13b:free\ngryphe/mythomax-l2-13b:nitro\nhuggingfaceh4/zephyr-7b-beta:free\ninfermatic/mn-inferor-12b\ninflatebot/mn-mag-mell-r1\ninflection/inflection-3-pi\ninflection/inflection-3-productivity\njondurbin/airoboros-l2-70b\nliquid/lfm-40b\nlizpreciatior/lzlv-70b-fp16-hf\nmancer/weaver\nmeta-llama/llama-2-13b-chat\nmeta-llama/llama-3-70b-instruct\nmeta-llama/llama-3-70b-instruct:nitro\nmeta-llama/llama-3-8b-instruct\nmeta-llama/llama-3-8b-instruct:extended\nmeta-llama/llama-3-8b-instruct:free\nmeta-llama/llama-3-8b-instruct:nitro\nmeta-llama/llama-3.1-405b\nmeta-llama/llama-3.1-405b-instruct\nmeta-llama/llama-3.1-405b-instruct:free\nmeta-llama/llama-3.1-405b-instruct:nitro\nmeta-llama/llama-3.1-70b-instruct\nmeta-llama/llama-3.1-70b-instruct:free\nmeta-llama/llama-3.1-70b-instruct:nitro\nmeta-llama/llama-3.1-8b-instruct\nmeta-llama/llama-3.1-8b-instruct:free\nmeta-llama/llama-3.2-11b-vision-instruct\nmeta-llama/llama-3.2-11b-vision-instruct:free\nmeta-llama/llama-3.2-1b-instruct\nmeta-llama/llama-3.2-1b-instruct:free\nmeta-llama/llama-3.2-3b-instruct\nmeta-llama/llama-3.2-3b-instruct:free\nmeta-llama/llama-3.2-90b-vision-instruct\nmeta-llama/llama-3.2-90b-vision-instruct:free\nmeta-llama/llama-3.3-70b-instruct\nmeta-llama/llama-guard-2-8b\nmicrosoft/phi-3-medium-128k-instruct\nmicrosoft/phi-3-medium-128k-instruct:free\nmicrosoft/phi-3-mini-128k-instruct\nmicrosoft/phi-3-mini-128k-instruct:free\nmicrosoft/phi-3.5-mini-128k-instruct\nmicrosoft/phi-4\nmicrosoft/wizardlm-2-7b\nmicrosoft/wizardlm-2-8x22b\nmistralai/codestral-mamba\nmistralai/ministral-3b\nmistralai/ministral-8b\nmistralai/mistral-7b-instruct\nmistralai/mistral-7b-instruct-v0.1\nmistralai/mistral-7b-instruct-v0.2\nmistralai/mistral-7b-instruct-v0.3\nmistralai/mistral-7b-instruct:free\nmistralai/mistral-7b-instruct:nitro\nmistralai/mistral-large\nmistralai/mistral-large-2407\nmistralai/mistral-large-2411\nmistralai/mistral-medium\nmistralai/mistral-nemo\nmistralai/mistral-small\nmistralai/mistral-tiny\nmistralai/mixtral-8x22b-instruct\nmistralai/mixtral-8x7b\nmistralai/mixtral-8x7b-instruct\nmistralai/mixtral-8x7b-instruct:nitro\nmistralai/pixtral-12b\nmistralai/pixtral-large-2411\nneversleep/llama-3-lumimaid-70b\nneversleep/llama-3-lumimaid-8b\nneversleep/llama-3-lumimaid-8b:extended\nneversleep/llama-3.1-lumimaid-70b\nneversleep/llama-3.1-lumimaid-8b\nneversleep/noromaid-20b\nnothingiisreal/mn-celeste-12b\nnousresearch/hermes-2-pro-llama-3-8b\nnousresearch/hermes-3-llama-3.1-405b\nnousresearch/hermes-3-llama-3.1-70b\nnousresearch/nous-hermes-2-mixtral-8x7b-dpo\nnousresearch/nous-hermes-llama2-13b\nnvidia/llama-3.1-nemotron-70b-instruct\nopenai/chatgpt-4o-latest\nopenai/gpt-3.5-turbo\nopenai/gpt-3.5-turbo-0125\nopenai/gpt-3.5-turbo-0613\nopenai/gpt-3.5-turbo-1106\nopenai/gpt-3.5-turbo-16k\nopenai/gpt-3.5-turbo-instruct\nopenai/gpt-4\nopenai/gpt-4-0314\nopenai/gpt-4-1106-preview\nopenai/gpt-4-32k\nopenai/gpt-4-32k-0314\nopenai/gpt-4-turbo\nopenai/gpt-4-turbo-preview\nopenai/gpt-4o\nopenai/gpt-4o-2024-05-13\nopenai/gpt-4o-2024-08-06\nopenai/gpt-4o-2024-11-20\nopenai/gpt-4o-mini\nopenai/gpt-4o-mini-2024-07-18\nopenai/gpt-4o:extended\nopenai/o1\nopenai/o1-mini\nopenai/o1-mini-2024-09-12\nopenai/o1-preview\nopenai/o1-preview-2024-09-12\nopenchat/openchat-7b\nopenchat/openchat-7b:free\nopenrouter/auto\nperplexity/llama-3-sonar-large-32k-chat\nperplexity/llama-3-sonar-large-32k-online\nperplexity/llama-3-sonar-small-32k-chat\nperplexity/llama-3.1-sonar-huge-128k-online\nperplexity/llama-3.1-sonar-large-128k-chat\nperplexity/llama-3.1-sonar-large-128k-online\nperplexity/llama-3.1-sonar-small-128k-chat\nperplexity/llama-3.1-sonar-small-128k-online\npygmalionai/mythalion-13b\nqwen/qvq-72b-preview\nqwen/qwen-2-72b-instruct\nqwen/qwen-2-7b-instruct\nqwen/qwen-2-7b-instruct:free\nqwen/qwen-2-vl-72b-instruct\nqwen/qwen-2-vl-7b-instruct\nqwen/qwen-2.5-72b-instruct\nqwen/qwen-2.5-7b-instruct\nqwen/qwen-2.5-coder-32b-instruct\nqwen/qwq-32b-preview\nraifle/sorcererlm-8x22b\nsao10k/l3-euryale-70b\nsao10k/l3-lunaris-8b\nsao10k/l3.1-70b-hanami-x1\nsao10k/l3.1-euryale-70b\nsao10k/l3.3-euryale-70b\nsophosympatheia/midnight-rose-70b\nteknium/openhermes-2.5-mistral-7b\nthedrummer/rocinante-12b\nthedrummer/unslopnemo-12b\nundi95/remm-slerp-l2-13b\nundi95/remm-slerp-l2-13b:extended\nundi95/toppy-m-7b\nundi95/toppy-m-7b:free\nundi95/toppy-m-7b:nitro\nx-ai/grok-2-1212\nx-ai/grok-2-vision-1212\nx-ai/grok-beta\nx-ai/grok-vision-beta\nxwin-lm/xwin-lm-70b",
+   "reqd": 1
+  },
+  {
+   "description": "Enter the system prompt content here. This will be automatically converted to JSON format for storage.",
+   "fieldname": "system_prompt",
+   "fieldtype": "Markdown Editor",
+   "label": "System Prompt",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_model_params",
+   "fieldtype": "Section Break",
+   "label": "Model Parameters"
+  },
+  {
+   "default": "0.7",
+   "description": "Controls randomness (0-1). Lower values make output more focused, higher more creative.",
+   "fieldname": "temperature",
+   "fieldtype": "Float",
+   "label": "Temperature",
+   "reqd": 1
+  },
+  {
+   "default": "1000",
+   "description": "Maximum number of tokens to generate",
+   "fieldname": "max_tokens",
+   "fieldtype": "Int",
+   "label": "Max Tokens",
+   "reqd": 1
+  },
+  {
+   "default": "0.95",
+   "description": "Nucleus sampling, considers smallest set of tokens whose probability exceeds this value (0-1)",
+   "fieldname": "top_p",
+   "fieldtype": "Float",
+   "label": "Top P",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_request",
+   "fieldtype": "Section Break",
+   "label": "Request Settings"
+  },
+  {
+   "default": "5",
+   "fieldname": "max_concurrent_requests",
+   "fieldtype": "Int",
+   "label": "Max Concurrent Requests",
+   "reqd": 1
+  },
+  {
+   "default": "30",
+   "fieldname": "request_timeout",
+   "fieldtype": "Int",
+   "label": "Request Timeout (seconds)",
+   "reqd": 1
+  },
+  {
+   "default": "3",
+   "fieldname": "max_retries",
+   "fieldtype": "Int",
+   "label": "Max Retries",
+   "reqd": 1
+  },
+  {
+   "default": "60",
+   "fieldname": "retry_delay",
+   "fieldtype": "Int",
+   "label": "Retry Delay (seconds)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_context",
+   "fieldtype": "Section Break",
+   "label": "Context Settings"
+  },
+  {
+   "default": "Project Wide",
+   "description": "Discussion Only: Current discussion context only\nProject Wide: All discussions, tasks and pages from current project\nTeam Wide: All discussions, tasks and pages from all team projects",
+   "fieldname": "context_depth",
+   "fieldtype": "Select",
+   "label": "Context Depth",
+   "options": "Discussion Only\nProject Wide\nTeam Wide",
+   "reqd": 1
+  },
+  {
+   "default": "10",
+   "description": "Number of previous messages to include in context for each discussion. Higher values provide more context but consume more tokens. Recommended range: 5-20 messages.",
+   "fieldname": "chat_memory",
+   "fieldtype": "Int",
+   "label": "Chat Memory (messages)",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "skip_if_last_message_from_agent_user",
+   "fieldtype": "Check",
+   "label": "Skip if Last Message from Agent User"
+  },
+  {
+   "fieldname": "section_break_teams",
+   "fieldtype": "Section Break",
+   "label": "Team Filters"
+  },
+  {
+   "description": "Only process these teams. Enter team IDs (e.g. TEAM-123) or exact team names, one per line. Leave empty to process all teams.",
+   "fieldname": "include_teams",
+   "fieldtype": "Long Text",
+   "label": "Include Teams (one per line)"
+  },
+  {
+   "description": "Skip these teams. Enter team IDs (e.g. TEAM-123) or exact team names, one per line.",
+   "fieldname": "exclude_teams",
+   "fieldtype": "Long Text",
+   "label": "Exclude Teams (one per line)"
+  },
+  {
+   "default": "default",
+   "description": "Select the context builder implementation to use",
+   "fieldname": "context_builder",
+   "fieldtype": "Select",
+   "label": "Context Builder",
+   "options": "default",
+   "reqd": 1
+  },
+  {
+   "fieldname": "html_xcys",
+   "fieldtype": "HTML",
+   "options": "<div style=\"display: flex; align-items: center; padding: 2rem; margin: 0 0 2rem; gap: 3rem; background: linear-gradient(135deg, var(--primary-color) 0%, var(--gray-600) 100%); border-radius: 12px; color: white;\"><div style=\"flex: 1\"><h1 style=\"margin: 0 0 1rem; font-size: 2rem; font-weight: 600; letter-spacing: -0.02em; color: white;\">Gameplan AI Assistant</h1><p style=\"margin: 0; font-size: 1.1rem; line-height: 1.5; opacity: 0.9; color: white;\">Your intelligent companion for team collaboration. Analyzes discussions, tasks, and project context to provide meaningful insights and drive productivity.</p></div><div style=\"flex: 0 0 auto; display: flex; align-items: center; justify-content: center;\"><div style=\"width: 120px; height: 120px; background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); border-radius: 24px; display: flex; align-items: center; justify-content: center;\"><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"64\" height=\"64\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"white\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2a5 5 0 0 1 5 5v6a5 5 0 0 1-10 0V7a5 5 0 0 1 5-5z\"></path><path d=\"M19 10v2a7 7 0 0 1-14 0v-2\"></path><line x1=\"12\" y1=\"19\" x2=\"12\" y2=\"22\"></line></svg></div></div></div>"
+  },
+  {
+   "fieldname": "section_break_yvan",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_rxln",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_dobt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_fzvv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_vvtx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_xhfl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_vvsu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_jbjr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zvat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pnox",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_kuvw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "google_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Google Settings"
+  },
+  {
+   "fieldname": "column_break_ntzw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "OpenAI",
+   "description": "Select the API schema to use for LLM requests",
+   "fieldname": "api_schema",
+   "fieldtype": "Select",
+   "label": "API Schema",
+   "options": "OpenAI\nAnthropic",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_gdyw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "top_k",
+   "fieldtype": "Float",
+   "label": "Top K"
+  },
+  {
+   "fieldname": "tools_prompt",
+   "fieldtype": "Markdown Editor",
+   "label": "Tools Prompt"
+  },
+  {
+   "fieldname": "column_break_kuvz",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2025-01-16 01:11:28.905743",
+ "modified_by": "Administrator",
+ "module": "Gameplan AI Assistant",
+ "name": "GP Agent Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

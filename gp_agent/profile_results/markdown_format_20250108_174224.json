@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_174224",
+  "hypothesis": {
+    "name": "markdown_format",
+    "description": "Тестирование структурированного markdown формата с разделением анализа и действий",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Нужна страница с чек-листом для менеджеров",
+  "response": {
+    "id": "gen-1736358388-aZsGf1nlBNMujjTa8jAF",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736358388,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user needs a checklist for managers. This implies a structured list of items that managers should consider or actions they should take, likely categorized for better organization. I need to figure out the different aspects of a manager's role to create a comprehensive checklist.\n\n**Analysis:**\nThe user request is clear: a checklist for managers. Based on my experience, effective checklists address different core responsibilities. I anticipate needing to categorize checklist items related to areas like:\n\n*   **Team Management:**  Performance reviews, feedback, delegation, team building.\n*   **Task/Project Management:** Planning, tracking progress, resource allocation.\n*   **Individual Development:** Coaching, mentoring, training opportunities.\n*   **Communication:**  Meetings, updates, conflict resolution.\n*   **Leadership & Strategy:**  Vision, goals, alignment.\n\nI will start by creating a basic structure and then populate it with specific items. Since this is a general request, I should aim for a versatile checklist that can be adapted to various management contexts.\n\n**План действий:**\n1. Создать новую страницу с названием \"Чек-лист для менеджеров\".\n2. Добавить разделы в чек-лист, например: \"Управление командой\", \"Управление задачами\", \"Развитие сотрудников\", \"Коммуникация\", \"Лидерство\".\n3. В каждом разделе добавить пункты с действиями или вопросами для менеджера.\n```tool_call\n{\n    \"name\": \"create_page\",\n    \"parameters\": {\n        \"title\": \"Чек-лист для менеджеров\"\n    }\n}\n```\n```tool_call\n{\n    \"name\": \"get_page_content\",\n    \"parameters\": {\n        \"title\": \"Чек-лист для менеджеров\"\n    }\n}\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 295,
+      "completion_tokens": 388,
+      "total_tokens": 683
+    }
+  }
+}

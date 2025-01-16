@@ -1,0 +1,171 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2024-01-06 22:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "status",
+  "validation_status",
+  "creation_timestamp",
+  "column_break_1",
+  "parent_log",
+  "tool_name",
+  "tool_id",
+  "section_break_1",
+  "tool_parameters",
+  "tool_parameters_content",
+  "section_break_validation",
+  "original_call",
+  "validation_errors",
+  "fix_details",
+  "section_break_2",
+  "tool_response",
+  "tool_response_content",
+  "error"
+ ],
+ "fields": [
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Queued\nProcessing\nError\nCompleted",
+   "search_index": 1
+  },
+  {
+   "description": "Status of tool call validation",
+   "fieldname": "validation_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Validation Status",
+   "options": "Valid\nFixed\nInvalid",
+   "search_index": 1
+  },
+  {
+   "fieldname": "tool_name",
+   "fieldtype": "Data",
+   "label": "Tool Name",
+   "reqd": 1
+  },
+  {
+   "description": "Unique identifier for this tool call instance",
+   "fieldname": "tool_id",
+   "fieldtype": "Data",
+   "label": "Tool ID"
+  },
+  {
+   "fieldname": "parent_log",
+   "fieldtype": "Link",
+   "label": "Parent Log",
+   "options": "GP Agent Log",
+   "reqd": 1
+  },
+  {
+   "fieldname": "creation_timestamp",
+   "fieldtype": "Datetime",
+   "label": "Creation Timestamp",
+   "reqd": 1
+  },
+  {
+   "fieldname": "tool_parameters",
+   "fieldtype": "Code",
+   "hidden": 1,
+   "label": "Tool Parameters JSON",
+   "options": "JSON"
+  },
+  {
+   "description": "Tool parameters in human-readable format",
+   "fieldname": "tool_parameters_content",
+   "fieldtype": "Long Text",
+   "is_virtual": 1,
+   "label": "Tool Parameters"
+  },
+  {
+   "fieldname": "tool_response",
+   "fieldtype": "Code",
+   "label": "Tool Response JSON",
+   "options": "JSON"
+  },
+  {
+   "description": "Tool response in human-readable format",
+   "fieldname": "tool_response_content",
+   "fieldtype": "Long Text",
+   "is_virtual": 1,
+   "label": "Tool Response"
+  },
+  {
+   "fieldname": "error",
+   "fieldtype": "Text",
+   "label": "Error"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Parameters"
+  },
+  {
+   "fieldname": "section_break_2",
+   "fieldtype": "Section Break",
+   "label": "Response"
+  },
+  {
+   "fieldname": "section_break_validation",
+   "fieldtype": "Section Break",
+   "label": "Validation"
+  },
+  {
+   "description": "Original tool call before fixes",
+   "fieldname": "original_call",
+   "fieldtype": "Code",
+   "label": "Original Call",
+   "options": "JSON"
+  },
+  {
+   "description": "List of validation errors found",
+   "fieldname": "validation_errors",
+   "fieldtype": "Code",
+   "label": "Validation Errors",
+   "options": "JSON"
+  },
+  {
+   "description": "Details of applied fixes",
+   "fieldname": "fix_details",
+   "fieldtype": "Code",
+   "label": "Fix Details",
+   "options": "JSON"
+  }
+ ],
+ "links": [],
+ "modified": "2025-01-15 23:49:45.001931",
+ "modified_by": "Administrator",
+ "module": "Gameplan AI Assistant",
+ "name": "GP Agent Tool Log",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "tool_name",
+ "track_changes": 1
+}

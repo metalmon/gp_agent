@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_181326",
+  "hypothesis": {
+    "name": "hybrid_format",
+    "description": "Тестирование гибридного формата с markdown для текста и строгой структурой для инструментов",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n### Анализ (на английском)\n- Оценка ситуации\n- Возможные подходы\n- Потенциальные проблемы\n\n### План (на русском)\n1. Первый шаг\n2. Второй шаг\n3. Следующие действия\n\n### Действие\n[Здесь вызов инструмента в формате JSON]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n### Анализ (на английском)\n- Оценка ситуации\n- Возможные подходы\n- Потенциальные проблемы\n\n### План (на русском)\n1. Первый шаг\n2. Второй шаг\n3. Следующие действия\n\n### Действие\n[Здесь вызов инструмента в формате JSON]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Проанализируй рынок CRM систем",
+  "response": {
+    "id": "gen-1736360128-kt2vF3cM1ySXjeyfP2MI",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736360128,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants to analyze the CRM market. This requires gathering information about the leading CRM systems, their features, pricing, target audience, and market trends.\n\n**Analysis:**\n- **Situation Assessment:** The CRM market is competitive and constantly evolving. Understanding the current landscape is crucial.\n- **Possible Approaches:** I can use web search to find articles, reports, and comparisons of CRM systems. I can also look for information on specific CRM vendors.\n- **Potential Problems:** The information found might be overwhelming, biased, or outdated. I need to synthesize and filter the data to provide a concise and relevant analysis.\n\n**Plan:**\n1. **Первый шаг:** Найти общие обзоры и рейтинги CRM систем, чтобы получить общее представление о рынке.\n2. **Второй шаг:** Уточнить поиск, сосредоточившись на ключевых игроках и трендах.\n3. **Следующие действия:** Обобщить полученную информацию и представить анализ.\n\n**Action:**\n```tool_call\n{\n    \"name\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"обзор рынка CRM систем 2024\"\n    }\n}\n```### Анализ (English)\n- **Situation Assessment:** The user wants an analysis of the CRM (Customer Relationship Management) system market. This involves understanding the current key players, trends, and types of solutions available.\n- **Possible Approaches:** I can use web search to gather information on market reports, rankings of CRM systems, and articles discussing current trends in the CRM industry. I can also look for information on specific popular CRM platforms.\n- **Potential Problems:**  The CRM market is vast, so focusing the analysis on the most relevant aspects will be important. Information may also be somewhat biased depending on the source.\n\n### План (Russian)\n1. **Первый шаг:** Найти общие отчеты об исследовании рынка CRM, чтобы получить общее представление о его размере, росте и ключевых игроках.\n2. **Второй шаг:** Поискать информацию о рейтингах и сравнениях популярных CRM систем, чтобы выделить лидеров и их особенности.\n3. **Следующие действия:** Изучить текущие тренды в индустрии CRM, такие как интеграция с AI, мобильность и облачные решения.\n\n### Действие\n```tool_call\n{\n    \"name\": \"web_search\",\n    \"parameters\": {\n        \"query\": \"отчет об исследовании рынка CRM\"\n    }\n}\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 307,
+      "completion_tokens": 542,
+      "total_tokens": 849
+    }
+  }
+}

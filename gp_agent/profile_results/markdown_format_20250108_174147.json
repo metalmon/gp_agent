@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_174147",
+  "hypothesis": {
+    "name": "markdown_format",
+    "description": "Тестирование структурированного markdown формата с разделением анализа и действий",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе всегда использую следующий формат:\n\n**Analysis:**\n[Здесь я анализирую ситуацию на английском языке, опираясь на опыт из других проектов]\n\n**План действий:**\n[Здесь я предлагаю конкретные действия на русском языке, говоря прямо и по делу]\n\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n\nДля вызова функции всегда использую формат:\n```tool_call\n{\n    \"name\": \"function_name\",\n    \"parameters\": {\n        \"param1\": \"value1\"\n    }\n}\n```\n",
+  "user_prompt": "Создай страницу с описанием процесса лид-генерации",
+  "response": {
+    "id": "gen-1736358108-GXCubCidTush74QrkppG",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736358108,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user wants to create a page describing the lead generation process. I should create this page by calling the `create_page` function.**Analysis:**\nThe user wants me to create a new page describing the lead generation process. This is a straightforward request and I have the functionality to create new pages.\n\n**План действий:**\n1. Создать новую страницу с названием \"Описание процесса лид-генерации\".\n```tool_call\n{\n    \"name\": \"create_page\",\n    \"parameters\": {\n        \"title\": \"Описание процесса лид-генерации\"\n    }\n}\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 296,
+      "completion_tokens": 128,
+      "total_tokens": 424
+    }
+  }
+}

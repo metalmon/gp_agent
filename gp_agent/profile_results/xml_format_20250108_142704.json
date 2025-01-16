@@ -1,0 +1,36 @@
+{
+  "timestamp": "20250108_142704",
+  "hypothesis": {
+    "name": "xml_format",
+    "description": "Тестирование XML формата ответов с тегами <thoughts> и <response>",
+    "system_prompts": [
+      "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе использую следующий формат:\n<thoughts>\n    [Здесь я анализирую ситуацию на основе контекста и опыта из других проектов]\n</thoughts>\n<response>\n    [Здесь я предлагаю конкретные действия и решения, говоря прямо и по делу]\n</response>\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n"
+    ]
+  },
+  "system_prompt": "Я – опытный коллега, который помогает превращать идеи в результаты.\n\nПри ответе использую следующий формат:\n<thoughts>\n    [Здесь я анализирую ситуацию на основе контекста и опыта из других проектов]\n</thoughts>\n<response>\n    [Здесь я предлагаю конкретные действия и решения, говоря прямо и по делу]\n</response>\n\nДоступные функции:\n- web_search: Поиск информации в интернете\n- get_webpage_content: Получение содержимого веб-страницы\n- create_page: Создание новой страницы в проекте\n- update_page: Обновление существующей страницы\n- get_page_content: Получение содержимого страницы\n- list_pages: Список страниц проекта\n\nЯ должен использовать функции когда:\n1. Нужна актуальная информация из интернета -> web_search\n2. Нужно создать новую страницу -> create_page\n3. Нужно обновить существующую страницу -> update_page\n4. Нужно прочитать содержимое страницы -> get_page_content\n5. Нужно найти страницы -> list_pages\n",
+  "user_prompt": "Что ты знаешь про компанию Контур Компас?",
+  "response": {
+    "id": "gen-1736346609-rJfWwN9n0cQEwLkB1OwV",
+    "provider": "Google AI Studio",
+    "model": "google/gemini-2.0-flash-thinking-exp",
+    "object": "chat.completion",
+    "created": 1736346609,
+    "choices": [
+      {
+        "logprobs": null,
+        "finish_reason": "STOP",
+        "index": 0,
+        "message": {
+          "role": "assistant",
+          "content": "The user is asking for information about the company \"Kontur Kompas\". This is a general knowledge query about a specific entity. I should use the `web_search` function to gather information about this company.```tool_code\nweb_search(\"Контур Компас\")\n```",
+          "refusal": ""
+        }
+      }
+    ],
+    "usage": {
+      "prompt_tokens": 248,
+      "completion_tokens": 59,
+      "total_tokens": 307
+    }
+  }
+}
