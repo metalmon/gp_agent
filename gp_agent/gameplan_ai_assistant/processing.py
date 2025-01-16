@@ -303,24 +303,23 @@ def process_single_response(response_data: Dict[str, Any], log: Log, settings: A
         has_message = False
         error_msg = ""
         
+        # Process tool calls if present
+        if tool_calls := response_data.get("tool_calls"):
+            log_debug("Processing tool calls")
+            try:
+                process_tool_calls(tool_calls, log, settings)
+                has_tool_calls = True
+            except Exception as e:
+                error_msg = error_msg + f"Error processing tool calls: {str(e)}/n"
+
         # Process message content if present and not empty
-        if content := response_data.get("content"):
+        elif content := response_data.get("content"):
             log_debug("Processing message content")
             try:
                 process_message_content(content, log, settings)
                 has_message = True
             except Exception as e:
-                error_msg = error_msg +f"Error processing message content: {str(e)}"
-
-        # Process tool calls if present
-        if tool_calls := response_data.get("tool_calls"):
-            log_debug("Processing tool calls")
-            try:
-                process_tool_calls(tool_calls, log, settings, content)
-                has_tool_calls = True
-            except Exception as e:
-                error_msg = error_msg + f"Error processing tool calls: {str(e)}/n"
-            
+                error_msg = error_msg +f"Error processing message content: {str(e)}"            
         # Set final status based on processing results
         if error_msg:
             log_debug(error_msg)
