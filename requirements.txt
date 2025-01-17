@@ -1,6 +1,0 @@
-tiktoken>=0.5.1
-Markdown>=3.4.3
-beautifulsoup4>=4.12.2
-markdown-it-py[plugins]>=3.0.0  # Additional markdown extensions
-html2text>=2024.2.26  # For converting HTML to Markdown 
-tqdm>=4.66.1  # For progress bars 
