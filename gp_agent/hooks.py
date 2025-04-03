@@ -148,27 +148,6 @@ app_license = "MIT"
 # 	}
 # }
 
-# Scheduled Tasks
-# ---------------
-
-scheduler_events = {
-	"hourly": [
-		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
-	],
-	"daily_long": [
-		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
-	],
-	"daily": [
-		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
-	],
-	"weekly_long": [
-		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
-	],
-	"all": [
-		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_process_pending_logs"
-	]
-}
-
 # Testing
 # -------
 
