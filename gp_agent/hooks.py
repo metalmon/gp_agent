@@ -91,8 +91,7 @@ app_license = "MIT"
 # Uninstallation
 # ------------
 
-# before_uninstall = "gp_agent.uninstall.before_uninstall"
-# after_uninstall = "gp_agent.uninstall.after_uninstall"
+before_uninstall = "gp_agent.uninstall.cleanup_scheduler_jobs"
 
 # Integration Setup
 # ------------------
@@ -223,4 +222,32 @@ app_license = "MIT"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
+
+# Scheduled Tasks
+# ---------------
+
+scheduler_events = {
+	"hourly": [
+		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_agent_runs"
+	],
+	"all": [
+		"gp_agent.gameplan_ai_assistant.scheduler_jobs.scheduled_process_pending_logs"
+	]
+}
+
+def after_migrate():
+	"""
+	Ensure scheduled jobs exist after migration.
+	This is called after bench migrate completes.
+	"""
+	import frappe
+	from frappe.core.doctype.scheduled_job_type.scheduled_job_type import sync_jobs
+
+	# First try to sync all jobs from hooks.py
+	try:
+		sync_jobs()
+	except frappe.exceptions.UniqueValidationError:
+		# If sync fails due to duplicate entries, we can safely ignore
+		# as it means the jobs already exist
+		pass
 
