@@ -138,30 +138,24 @@ def create_agent_log(
         log_debug(error_msg)
         
         # Create failed log
-        log_data = {
-            "doctype": "GP Agent Log",
-            "status": "Failed",
-            "api_schema": api_schema,
-            "model": model,
-            "creation_timestamp": frappe.utils.now_datetime(),
-            "error": error_msg,
-            "default_user": agent_user,  # Save the invalid user for debugging
-            "team_id": team_id,
-            "project_id": project_id,
-            "discussion_id": discussion_id,
-            "last_message_id": last_message_id,
-            "parent_log_id": parent_log_id,
-            "is_tool_call": is_tool_call,
-            "model": model,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "top_p": top_p,
-            "top_k": top_k,
-            "context_depth": context_depth,
-            "tools": tools,
-            "error": error_msg
-        }
-        create_failed_log(**log_data)
+        create_failed_log(
+            team_id=team_id,
+            project_id=project_id,
+            discussion_id=discussion_id,
+            agent_user=agent_user,
+            context=context,
+            model=model,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            top_p=top_p,
+            top_k=top_k,
+            context_depth=context_depth,
+            last_message_id=last_message_id,
+            parent_log_id=parent_log_id,
+            is_tool_call=is_tool_call,
+            tools=[],
+            error=error_msg
+        )
         raise
     
     # Get model settings with defaults from GP Agent Settings
@@ -180,6 +174,10 @@ def create_agent_log(
     
     # Create token manager
     token_manager = TokenManager(model, max_tokens)
+    
+    # Initialize variables
+    total_tokens = 0
+    tools = []
     
     try:
         # Validate and compress context if needed
@@ -232,32 +230,28 @@ def create_agent_log(
         #return frappe.get_doc(log_data)
         
     except TokenLimitError as e:
-        log_debug(f"Token limit exceeded: {str(e)}")
+        error_msg = str(e)
+        log_debug(f"Token limit exceeded: {error_msg}")
         # Create failed log
-        log_data = {
-            "doctype": "GP Agent Log",
-            "status": "Failed",
-            "model": model,
-            "creation_timestamp": frappe.utils.now_datetime(),
-            "error": error_msg,
-            "default_user": agent_user,  # Save the invalid user for debugging
-            "team_id": team_id,
-            "project_id": project_id,
-            "discussion_id": discussion_id,
-            "last_message_id": last_message_id,
-            "parent_log_id": parent_log_id,
-            "is_tool_call": is_tool_call,
-            "model": model,
-            "temperature": temperature,
-            "max_tokens": max_tokens,
-            "token_count": total_tokens,
-            "top_p": top_p,
-            "top_k": top_k,
-            "context_depth": context_depth,
-            "tools": tools,
-            "error": error_msg
-        }
-        create_failed_log(**log_data)
+        create_failed_log(
+            team_id=team_id,
+            project_id=project_id,
+            discussion_id=discussion_id,
+            agent_user=agent_user,
+            context=context,
+            model=model,
+            temperature=temperature,
+            token_count=total_tokens,
+            max_tokens=max_tokens,
+            top_p=top_p,
+            top_k=top_k,
+            context_depth=context_depth,
+            last_message_id=last_message_id,
+            parent_log_id=parent_log_id,
+            is_tool_call=is_tool_call,
+            tools=tools,
+            error=error_msg
+        )
         raise
     except Exception as e:
         log_debug(f"Error creating agent log: {str(e)}")

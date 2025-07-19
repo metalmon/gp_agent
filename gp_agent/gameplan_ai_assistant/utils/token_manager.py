@@ -1,6 +1,7 @@
 import json
 from typing import Dict, Any, Optional
-import tiktoken
+# import tiktoken  # Commented out due to Azure server blocking in Russia
+from transformers import AutoTokenizer
 from ..exceptions import TokenLimitError
 
 class TokenManager:
@@ -17,22 +18,78 @@ class TokenManager:
             max_tokens: Maximum number of tokens allowed
             
         Note:
-            Uses cl100k_base as a fallback encoding for non-OpenAI models
-            This provides a reasonable approximation for most modern models
+            Uses transformers tokenizer as fallback due to Azure server blocking
+            This provides accurate token counting for most models
         """
         self.model = model
         self.max_tokens = max_tokens
         
+        # Initialize tokenizer based on model
+        self.tokenizer = self._get_tokenizer(model)
+        
+    def _get_tokenizer(self, model: str):
+        """Get appropriate tokenizer for the model"""
         try:
-            # Try to get model-specific encoding first
-            self.encoder = tiktoken.encoding_for_model(model)
-        except KeyError:
-            # Fallback to default encoding for non-OpenAI models
-            self.encoder = tiktoken.get_encoding(self.DEFAULT_ENCODING)
+            # Map model names to appropriate tokenizer models
+            tokenizer_mapping = {
+                # OpenAI models
+                'gpt-4': 'gpt2',
+                'gpt-3.5-turbo': 'gpt2',
+                'gpt-4o': 'gpt2',
+                'gpt-4o-mini': 'gpt2',
+                
+                # Google models - use T5 tokenizer as approximation
+                'google/gemini-flash-1.5': 't5-base',
+                'google/gemini-pro': 't5-base',
+                'google/gemini-pro-1.5': 't5-base',
+                'google/gemini-2.0-flash-001': 't5-base',
+                
+                # Anthropic models - use GPT2 as approximation
+                'anthropic/claude-3': 'gpt2',
+                'anthropic/claude-3.5': 'gpt2',
+                'anthropic/claude-3.5-sonnet': 'gpt2',
+                
+                # Default fallback
+                'default': 'gpt2'
+            }
             
+            # Get tokenizer model name
+            tokenizer_model = tokenizer_mapping.get(model, tokenizer_mapping['default'])
+            
+            # Load tokenizer
+            return AutoTokenizer.from_pretrained(tokenizer_model)
+            
+        except Exception as e:
+            # Fallback to simple word counting if tokenizer fails
+            print(f"Warning: Could not load tokenizer for {model}: {e}")
+            return None
+        
     def count_tokens(self, text: str) -> int:
         """Count tokens in a text string"""
-        return len(self.encoder.encode(text))
+        if not text:
+            return 0
+            
+        if self.tokenizer:
+            try:
+                # Use transformers tokenizer for accurate counting
+                tokens = self.tokenizer.encode(text)
+                return len(tokens)
+            except Exception as e:
+                print(f"Warning: Tokenizer failed, falling back to word counting: {e}")
+                return self._count_tokens_simple(text)
+        else:
+            # Fallback to simple word counting
+            return self._count_tokens_simple(text)
+    
+    def _count_tokens_simple(self, text: str) -> int:
+        """Simple word-based token counting as fallback"""
+        if not text:
+            return 0
+            
+        # Simple approximation: ~1.3 tokens per word for English text
+        # This is a reasonable approximation for most models
+        words = text.split()
+        return int(len(words) * 1.3)
         
     def count_json(self, data: Any) -> int:
         """Count tokens in any JSON-serializable data"""
