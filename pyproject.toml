@@ -9,7 +9,7 @@ readme = "README.md"
 dynamic = ["version"]
 
 dependencies = [
-    'tiktoken>=0.5.1',
+    'transformers>=4.53.2',
     'Markdown>=3.4.3',
     'beautifulsoup4>=4.12.2',
     'markdown-it-py[plugins]>=3.0.0',
